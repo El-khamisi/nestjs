@@ -37,7 +37,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            git clone https://github.com/El-khamisi/nestjs.git
             cd ~/nestjs
             npm ci
             pm2 start npm -- start
