@@ -19,14 +19,7 @@ jobs:
       with:
         node-version: 16
         check-latest: true
-    - run: npm ci
-    
-  build:
-    runs-on: ubuntu-latest
-    needs: init-env
-    steps:
-    - name: Build Nestjs app
-      run: |
+    - run:  |
         npm ci
         npm run build
 
