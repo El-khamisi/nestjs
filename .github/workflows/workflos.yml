@@ -30,13 +30,14 @@ jobs:
     needs: [init-env]
 
     steps:
+      - uses: actions/checkout@v3
       - name: steps to deploay
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: 68.183.64.181
+          username: root
           key: ${{ secrets.KEY }}
-          port: ${{ secrets.SSH_PORT }}
+          port: 22
           script: |
             echo "evn ${{ secrets.HOST }}"
             cd ~/nestjs
