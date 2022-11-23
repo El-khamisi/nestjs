@@ -34,7 +34,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [init-env, build, deploy]
+    needs: [init-env, build]
 
     steps:
       - name: steps to deploay
