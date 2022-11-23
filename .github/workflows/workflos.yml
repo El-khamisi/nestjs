@@ -36,7 +36,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
+            echo "evn ${{ secrets.HOST }}"
             cd ~/nestjs
             npm ci
             pm2 start npm -- start
