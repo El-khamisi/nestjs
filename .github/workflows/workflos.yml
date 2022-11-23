@@ -4,9 +4,6 @@ on:
   push:
     branches: ["master"]
 
-env:
-  PORT: ${{secrets.PORT}}
-  DATABASE_URL: ${{secrets.DATABASE_URL}}
 
 jobs:
 
