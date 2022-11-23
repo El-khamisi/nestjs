@@ -32,6 +32,7 @@ jobs:
       - name: steps to deploay
         uses: appleboy/ssh-action@master
         with:
+          port: 22
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
