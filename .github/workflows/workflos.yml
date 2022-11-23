@@ -4,9 +4,9 @@ on:
   push:
     branches: ["master"]
 
-# env:
-#   PORT: ${{secrets.PORT}}
-#   DATABASE_URL: ${{secrets.DATABASE_URL}}
+env:
+  PORT: ${{secrets.PORT}}
+  DATABASE_URL: ${{secrets.DATABASE_URL}}
 
 jobs:
   init-env:
@@ -36,6 +36,12 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          script: whoami
+          script: |
+            whoami
+            clone https://github.com/El-khamisi/nestjs.git
+            cd ~/nestjs
+            npm ci
+            pm2 start npm -- start
+
 
 
