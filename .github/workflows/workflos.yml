@@ -26,13 +26,13 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: deploy
     needs: [init-env]
 
     steps:
       - name: steps to deploay
         uses: appleboy/ssh-action@master
         with:
-          port: 22
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
