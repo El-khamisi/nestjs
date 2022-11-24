@@ -24,7 +24,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    environment: deploy
+    # environment: deploy
     # needs: [init-env]
 
     steps:
