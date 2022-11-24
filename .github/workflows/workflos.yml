@@ -60,7 +60,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script:  |
             IFS='/'
-            read -ra LOCAL_PATH <<< "${github.GITHUB_REPOSITORY}"
+            read -ra LOCAL_PATH <<< "${env.GITHUB_REPOSITORY}"
+            echo "${env.GITHUB_REPOSITORY}"
             if [ -d  "~/${LOCAL_PATH[1]}" ]
             then 
               cd "~/${LOCAL_PATH[1]}"
