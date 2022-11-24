@@ -33,6 +33,7 @@ jobs:
 
   init-env:
     runs-on: ubuntu-latest
+    needs: [auto-format]
 
     steps:
     - uses: actions/checkout@master
@@ -47,7 +48,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [init-env]
+    needs: [auto-format, init-env]
 
     steps:
       - name: steps to deploay
