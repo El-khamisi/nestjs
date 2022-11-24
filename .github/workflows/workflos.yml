@@ -39,5 +39,5 @@ jobs:
             echo "${{secrets.DATABASE_URL}} ${{secrets.cup}}" > .env
             npm ci
             npm run build
-            pm2 start npm --name "app-name" -- start
+            pm2 restart app-name
 
