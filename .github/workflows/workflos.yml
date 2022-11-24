@@ -25,7 +25,7 @@ jobs:
 
     - name: "Run if changes have been detected"
       if: steps.auto-commit.outputs.changes_detected == 'true'
-      run: echo "Changes!"
+      run: echo "Formatted"
 
     - name: "Run if no changes have been detected"
       if: steps.auto-commit.outputs.changes_detected == 'false'
@@ -59,19 +59,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           script:  |
-            IFS='/'
-            read -ra LOCAL_PATH <<< "${env.GITHUB_REPOSITORY}"
-            echo "${env.GITHUB_REPOSITORY}"
-            if [ -d  "~/${LOCAL_PATH[1]}" ]
-            then 
-              cd "~/${LOCAL_PATH[1]}"
-              git pull origin master
-            else
-              git clone https://github.com/El-khamisi/nestjs.git
-              cd "~/${LOCAL_PATH[1]}"
-            fi
-            IFS=' '
-
+            cd ~/nestjs
+            git pull origin master
             echo "
             PORT=${{secrets.PORT}}
             DATABASE_URL=${{secrets.DATABASE_URL}}
@@ -80,8 +69,8 @@ jobs:
             TOKEN_SHORT_EXPIRY=${{secrets.TOKEN_SHORT_EXPIRY}}
             TOKEN_LONG_EXPIRY=${{secrets.TOKEN_LONG_EXPIRY}}
             "> .env
-            pm2 del "${LOCAL_PATH[1]}"
             npm i --production 
             npm run build
-            pm2 start "npm start" --name "${LOCAL_PATH[1]}"
-            echo "### Hello "${LOCAL_PATH[1]}"! :rocket:" >> $GITHUB_STEP_SUMMARY
+            pm2 restart nestj --update-env
+      - name: Finished
+        run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
