@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: display
       run:  |
-      echo "${{ secrets.KEY }}"
+        echo "${{ secrets.KEY }}"
 
   deploy:
     runs-on: ubuntu-latest
