@@ -71,6 +71,6 @@ jobs:
             "> .env
             npm i --production 
             npm run build
-            pm2 restart nestj --update-env
+            pm2 restart nestjs --update-env
       - name: Finished
         run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
