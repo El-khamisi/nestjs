@@ -36,7 +36,10 @@ jobs:
           script:  |
             cd ~/nestjs
             git pull origin master
-            echo "DATABASE_URL=${{secrets.DATABASE_URL}} cup=${{secrets.cup}}" > .env
+            echo "
+            DATABASE_URL=${{secrets.DATABASE_URL}}
+            cup=${{secrets.cup}}
+            " > .env
             npm ci
             npm run build
             pm2 restart app-name
