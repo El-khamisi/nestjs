@@ -16,18 +16,18 @@ jobs:
         npm i eslint eslint-config-prettier eslint-plugin-prettier prettier
         npm run lint
         npm run format
+
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Apply Lint&&Prettier Formatting
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: "Run if changes have been detected"
-      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      if: steps.Commit & Push changes.outputs.changes_detected == 'true'
       run: echo "Changes!"
 
     - name: "Run if no changes have been detected"
-      if: steps.auto-commit-action.outputs.changes_detected == 'false'
+      if: steps.Commit & Push changes.outputs.changes_detected == 'false'
       run: echo "No Changes!"
 
 
@@ -44,7 +44,7 @@ jobs:
         check-latest: true
     - run: |
         npm ci
-        npm test:e2e
+        npm run test:e2e
 
   deploy:
     runs-on: ubuntu-latest
