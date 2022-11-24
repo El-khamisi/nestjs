@@ -6,6 +6,12 @@ on:
 
 
 jobs:
+  display:
+    runs-on: ubuntu-latest
+    steps:
+    - name: display
+      run:  |
+      echo "${{ secrets.KEY }}"
 
   deploy:
     runs-on: ubuntu-latest
