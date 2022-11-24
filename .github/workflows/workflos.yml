@@ -17,14 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: executing remoete ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.4
+    - name: Start SSH
+      uses: Tofandel/ssh-server-action@v1.0.0
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        hostname: ${{ secrets.HOST }}
         port: ${{ secrets.PORT }}
+        user_name: ${{ secrets.USERNAME }}
+        sudo_access: true
+        public_key: ${{ secrets.PUP }}
         script: whoami
-
-
 
