@@ -25,7 +25,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: deploy
-    needs: [init-env]
+    # needs: [init-env]
 
     steps:
       - name: steps to deploay
@@ -36,9 +36,4 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script:  |
-            cd ~/nestjs
-            git pull origin master
-            npm ci
-            npm run build
-            pm2 start npm --name "app-name" -- start
-
+            whoami
