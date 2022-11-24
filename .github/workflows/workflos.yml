@@ -60,7 +60,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script:  |
             IFS='/'
-            read -ra LOCAL_PATH <<< "$GITHUB_REPOSITORY"
+            read -ra LOCAL_PATH <<< "${github.GITHUB_REPOSITORY}"
             if [ -d  "~/${LOCAL_PATH[1]}" ]
             then 
               cd "~/${LOCAL_PATH[1]}"
@@ -80,7 +80,7 @@ jobs:
             TOKEN_LONG_EXPIRY=${{secrets.TOKEN_LONG_EXPIRY}}
             "> .env
             pm2 del "${LOCAL_PATH[1]}"
-            npm ci
+            npm i --production 
             npm run build
             pm2 start "npm start" --name "${LOCAL_PATH[1]}"
             echo "### Hello "${LOCAL_PATH[1]}"! :rocket:" >> $GITHUB_STEP_SUMMARY
