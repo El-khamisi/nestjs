@@ -68,8 +68,8 @@ jobs:
 
       - name: Build the Docker image and push it
         run:  |
-          echo ${{secrets.GITHUB_REPOSITORY}}
-          docker build -t ${{secrets.GITHUB_REPOSITORY}} .
+          echo ${{github.GITHUB_REPOSITORY}}
+          docker build -t ${{github.GITHUB_REPOSITORY}} .
 
 
 
