@@ -4,12 +4,13 @@ on:
   push:
     branches: ["master", "workflows"]
 
-# env:
-#   PORT=${{secrets.PORT}}
-#   DATABASE_URL=${{secrets.DATABASE_URL}}
-#   SALT_ROUNDS=${{secrets.SALT_ROUNDS}}
-#   TOKEN_SECRET=${{secrets.TOKEN_SECRET}}
-#   TOKEN_SHORT_EXPIRY=${{secrets.TOKEN_SHORT_EXPIRY}}
+env:
+  REPOSITORY: ${{ github.repository }}
+  PORT: ${{secrets.PORT}}
+  DATABASE_URL: ${{secrets.DATABASE_URL}}
+  SALT_ROUNDS: ${{secrets.SALT_ROUNDS}}
+  TOKEN_SECRET: ${{secrets.TOKEN_SECRET}}
+  TOKEN_SHORT_EXPIRY: ${{secrets.TOKEN_SHORT_EXPIRY}}
 
 
 jobs:
@@ -36,8 +37,8 @@ jobs:
   #     run: echo "Formatted"
 
   #   - name: "Run if no changes have been detected"
-  #     if: steps.auto-commit.outputs.changes_detected == 'false'
   #     run: echo "No Changes!"
+  #     if: steps.auto-commit.outputs.changes_detected == 'false'
 
 
   # init-env:
@@ -71,7 +72,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${GITHUB_REPOSITORY,,}
+          images: ghcr.io/${{env.REPOSITORY}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
