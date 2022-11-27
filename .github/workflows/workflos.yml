@@ -71,7 +71,7 @@ jobs:
         run:  |
           echo ${GITHUB_REPOSITORY,,}
           docker build -t ${GITHUB_REPOSITORY,,} .
-          docker push ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY,,}:latest
+          docker push ghcr.io/${GITHUB_REPOSITORY,,}:latest
 
 
 
