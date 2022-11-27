@@ -1,0 +1,9 @@
+# compiled output
+/dist
+/node_modules
+
+# source code
+/test
+.*
+nest-cli.json
+README.md
