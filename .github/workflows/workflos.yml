@@ -40,25 +40,26 @@ jobs:
   #     run: echo "No Changes!"
 
 
-  init-env:
-    runs-on: ubuntu-latest
-    # needs: [auto-format]
+  # init-env:
+  #   runs-on: ubuntu-latest
+  #   # needs: [auto-format]
 
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup && Test Node.js environment
-      uses: actions/setup-node@master
-      with:
-        node-version: 16
-        check-latest: true
-    - run: |
-        npm ci
-        npm run test:e2e
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - name: Setup && Test Node.js environment
+  #     uses: actions/setup-node@master
+  #     with:
+  #       node-version: 16
+  #       check-latest: true
+  #   - run: |
+  #       npm ci
+  #       npm run test:e2e
 
   dockerzing:
     runs-on: ubuntu-latest
 
     steps: 
+      - uses: actions/checkout@master
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
