@@ -69,7 +69,7 @@ jobs:
       - name: Build the Docker image and push it
         run:  |
           echo "repo=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-          echo ${{github.repository}}
+          echo ${${{github.repository}},,}
 
 
 # docker build -t ${repo} .
