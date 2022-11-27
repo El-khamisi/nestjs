@@ -68,11 +68,10 @@ jobs:
 
       - name: Build the Docker image and push it
         run:  |
-          echo "repo=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
           echo ${GITHUB_REPOSITORY,,}
+          docker build -t ${GITHUB_REPOSITORY,,} .
+          docker push ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY,,}:latest
 
-
-# docker build -t ${repo} .
 
 
     
