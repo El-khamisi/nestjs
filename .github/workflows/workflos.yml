@@ -61,7 +61,8 @@ jobs:
 
     steps: 
       - uses: actions/checkout@master
-        run: env
+      - name: run
+          run: env
       # - name: Login to GitHub Container Registry
       #   uses: docker/login-action@v2
       #   with:
