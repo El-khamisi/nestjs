@@ -6,7 +6,7 @@ on:
 
 env:
   REPOSITORY: ${{ github.repository }}
-  PORT: ${{secrets.PORT}}
+  # PORT: ${{secrets.PORT}}
   DATABASE_URL: ${{secrets.DATABASE_URL}}
   SALT_ROUNDS: ${{secrets.SALT_ROUNDS}}
   TOKEN_SECRET: ${{secrets.TOKEN_SECRET}}
