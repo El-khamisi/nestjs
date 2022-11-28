@@ -91,7 +91,6 @@ jobs:
           script:  |
             echo ${{env.DATABASE_URL}} 
             echo $DATABASE_URL
-# docker container rm 
             docker image prune -a
             docker pull ghcr.io/el-khamisi/nestjs:latest
             docker images ls -a
@@ -99,6 +98,7 @@ jobs:
       - name: Finished
         run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
 
+# docker container rm 
 
 
     
