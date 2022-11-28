@@ -86,7 +86,7 @@ jobs:
       - name: steps to deploay
         uses: appleboy/ssh-action@v0.1.4
         with:
-          username: root
+          username: cup
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           script:  |
