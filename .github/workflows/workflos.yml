@@ -61,35 +61,51 @@ jobs:
 
     steps: 
       - uses: actions/checkout@master
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        run: env
+      # - name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v2
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ghcr.io/${{env.REPOSITORY}}
+      # - name: Extract metadata (tags, labels) for Docker
+      #   id: meta
+      #   uses: docker/metadata-action@v4
+      #   with:
+      #     images: ghcr.io/${{env.REPOSITORY}}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     labels: ${{ steps.meta.outputs.labels }}
 
-
-      # - name: Build the Docker image and push it
-      #   run:  |
-      #     echo ${GITHUB_REPOSITORY,,}
-      #     docker build -t ${GITHUB_REPOSITORY,,} .
-      #     docker run ghcr.io/${GITHUB_REPOSITORY,,}:latest
-      #     docker push ghcr.io/${GITHUB_REPOSITORY,,}:latest
+      # - name: steps to deploay
+      #   uses: appleboy/ssh-action@v0.1.4
+      #   with:
+      #     username: root
+      #     host: ${{ secrets.SSH_HOST }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script:  |
+      #       cd ~/nestjs
+      #       git pull origin master
+      #       npm i
+      #       npm run build
+      #       pm2 restart nestjs --update-env
+      # - name: Finished
+      #   run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
 
 
 
     
+
+
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [auto-format, init-env]
+
+  #   steps:
+      
