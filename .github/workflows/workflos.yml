@@ -82,7 +82,6 @@ jobs:
       #     push: true
       #     tags: ${{ steps.meta.outputs.tags }}
       #     labels: ${{ steps.meta.outputs.labels }}
-
       - name: steps to deploay
         uses: appleboy/ssh-action@v0.1.4
         with:
@@ -92,9 +91,11 @@ jobs:
           script:  |
             echo ${{env.DATABASE_URL}} 
             echo $DATABASE_URL
+# docker container rm 
+            docker image prune -a
             docker pull ghcr.io/el-khamisi/nestjs:latest
             docker images ls -a
-            docker run -d -p 3000:5050 -e ${{env.DATABASE_URL}} el-khamisi/nestjs
+            docker run -d -p 3000:5050 -e ${{env.DATABASE_URL}} ghcr.io/el-khamisi/nestjs:latest
       - name: Finished
         run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
 
