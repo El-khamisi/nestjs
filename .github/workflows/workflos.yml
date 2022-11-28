@@ -94,7 +94,7 @@ jobs:
             docker image prune -a
             docker pull ghcr.io/el-khamisi/nestjs:latest
             docker images ls -a
-            docker run -d -p 3000:5050 -e ${{env.DATABASE_URL}} ghcr.io/el-khamisi/nestjs:latest
+            docker run -d -p 4000:5050 -e ${{env.DATABASE_URL}} ghcr.io/el-khamisi/nestjs:latest
       - name: Finished
         run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
 
