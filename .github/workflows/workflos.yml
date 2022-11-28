@@ -90,8 +90,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           script:  |
-            docker pull ghcr.io/el-khamisi/nestjs:latest
-            docker run -d --p 3000:5050 el-khamisi/nestjs
+# docker pull ghcr.io/el-khamisi/nestjs:latest
+# docker run -d --p 3000:5050 -e el-khamisi/nestjs
       - name: Finished
         run: echo "### Hello "nestjs"! :rocket:" >> $GITHUB_STEP_SUMMARY
 
